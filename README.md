@@ -1,2 +1,2 @@
-# nous
+# Nous
 A Phenomenological Programming Language.
