@@ -1,0 +1,19 @@
+And = {
+  True = {(a, a)}
+  False = {(a, b), (b, a), (b, b)}
+}
+
+Or = {
+  True = {(a, a), (a, b), (b, a)},
+  False = {(b, b)}
+}
+
+Xor = {
+  True = {(a, b), (b, a)},
+  False = {(a, a), (b, b)}
+}
+
+Not = a b -> b a
+
+True = {Not False}
+False = {Not True}

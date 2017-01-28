@@ -17,4 +17,12 @@ executable nous
   hs-source-dirs:      src
   main-is:             Main.hs
   default-language:    Haskell2010
-  build-depends:       base >= 4.7 && < 5
+  other-modules:
+    Parse.Parse
+  build-depends:
+    base >= 4.7 && < 5,
+    parsec
+
+source-repository head
+  type:     git
+  location: https://github.com/niho/nous
