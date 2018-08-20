@@ -21,25 +21,50 @@ You never have to worry about the total number of inputs for a rule. Nous will a
 A *transformer* is a Nous grammar rule with a single input and a single output. It is used as a macro to rearrange or modify a grammatical rule as it is used. A transformation is identified in usage by the syntax `A B` or `A b`. Where the first term is the transformer and the second term is the rule (or input) that is being transformed. A transformer is defined using the `->` operator, with the left hand side describing the input and the right hand side the output. An important distinction to keep in mind is that a transformation does not directly modify the actual values that are processed by a rule. It only modifies the grammatical structure of the rule itself.
 
 	Rule = a b -> b a
+	
+## Example 1. Literals
 
-## Example 1. Logic gates
+	Dog = { "poodle", "labrador" }
+	
+	Cat = { "🐈", "🐱", "😺" }
+	
+	Prime = { 2, 3, 5, 7, 11, 13 }
 
-	And = {
-		True = {(a, a)},
-		False = {(a, b), (b, a), (b, b)}
-	}
-
-	Or = {
-		True = {(a, a), (a, b), (b, a)},
-		False = {(b, b)}
-	}
-
-	Xor = {
-		True = {(a, b), (b, a)},
-		False = {(a, a), (b, b)}
-	}
+## Example 2. Logic gates
 
 	Not = a b -> b a
 
 	True = {Not False}
 	False = {Not True}
+
+	And a b = {
+		True = {(a, a)},
+		False = {(a, b), (b, a), (b, b)}
+	}
+
+	Or a b = {
+		True = {(a, a), (a, b), (b, a)},
+		False = {(b, b)}
+	}
+
+	Xor a b = {
+		True = {(a, b), (b, a)},
+		False = {(a, a), (b, b)}
+	}
+
+
+## Example 3. Classification
+
+	Mammal a = {
+		Dog = {a},
+		Cat = {a}
+	}
+	
+	Number a = {
+		Prime = {a}
+	}
+	
+	Main a = {
+		True = { Mammal },
+		False = { Number }
+	}
